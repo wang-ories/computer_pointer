@@ -35,9 +35,9 @@ class InputFeeder:
         If input_type is 'image', then it returns the same image.
         """
         while True:
-            for _ in range(10):
+            for _ in range(1):
                 _, frame = self.cap.read()
-            yield frame
+            yield frame, _
 
     def close(self):
         """
