@@ -1,0 +1,38 @@
+Inference Time  : 61.2
+Frame Per Second  : 9.722222222222221
+Model load time  : 1.1724512577056885
+
+
+
+
+# face-detection-retail-0004/FP16/face-detection-retail-0004  et FP32/landmarks-regression-retail-0009
+debut:0.002218008041381836(1)
+fin:0.0036728382110595703(3)
+
+# face-detection-retail-0004/FP16/face-detection-retail-0004  et FP16-INT8/landmarks-regression-retail-0009 (2)
+debut: 0.0023250579833984375(2)
+fin:0.002766847610473633(2)
+
+
+# face-detection-retail-0004/FP16/face-detection-retail-0004  et FP16/landmarks-regression-retail-0009 (1)
+debut: 0.0022819042205810547(1)
+fin: 0.001608133316040039(1)
+
+
+ face-detection-retail-0004/FP16/face-detection-retail-0004  et FP16/landmarks-regression-retail-0009 (1) pose 16
+
+Time taken for face is 0.04593992233276367
+Time taken for landmark is 0.002629995346069336
+Time taken for pose is 0.01543283462524414
+
+
+Time taken for face is 0.05468392372131348
+Time taken for landmark is 0.003022909164428711
+========Start pose=========
+Time taken for pose is 0.007740974426269531
+
+
+Time taken for face is 0.048204898834228516
+Time taken for landmark is 0.0026521682739257812
+========Start pose=========
+Time taken for pose is 0.005753993988037109

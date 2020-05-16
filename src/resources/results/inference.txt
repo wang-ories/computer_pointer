@@ -1,0 +1,3 @@
+Inference Time Average : 0.0
+Frame Per Second  : 29
+Model load time  : 2.074084997177124
