@@ -181,3 +181,7 @@ if __name__ == '__main__':
 # Benchmark openvino how to ?
 # Links to documentation
 # Opencv : how to create window and move to center
+
+
+source env/bin/activate
+pip install -r requirements.txt
