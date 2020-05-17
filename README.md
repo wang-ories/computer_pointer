@@ -46,3 +46,12 @@ If you have used Async Inference in your code, benchmark the results and explain
 
 ### Edge Cases
 There will be certain situations that will break your inference flow. For instance, lighting changes or multiple people in the frame. Explain some of the edge cases you encountered in your project and how you solved them to make your project more robust.
+
+
+
+# Virtual Env
+`$ virtualenv --python=python3.7  computer-pointer
+## Copy the files and source environment
+`$source computer-pointer/bin/activate`
+[Documentation : virtual env]
+`$ git clone https://files`
