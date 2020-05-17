@@ -9,9 +9,9 @@ BASE_DIR=`pwd`
 #Download the video
 cd resources
 # Link to demo video
-wget https://github.com/intel-iot-devkit/sample-videos/raw/master/one-by-one-person-detection.mp4
-wget https://github.com/intel-iot-devkit/sample-videos/raw/master/people-detection.mp4
-wget https://github.com/intel-iot-devkit/sample-videos/raw/master/bottle-detection.mp4
+#wget https://github.com/intel-iot-devkit/sample-videos/raw/master/one-by-one-person-detection.mp4
+#wget https://github.com/intel-iot-devkit/sample-videos/raw/master/people-detection.mp4
+#wget https://github.com/intel-iot-devkit/sample-videos/raw/master/bottle-detection.mp4
 
 #Download the model
 cd /opt/intel/openvino/deployment_tools/tools/model_downloader
