@@ -34,7 +34,7 @@ class FaceDetection:
         start = time.time()
         ie_core = IECore()
         self.net = ie_core.load_network(self.model, self.device, num_requests=4)
-        print('[1] Loaded in  {:.3f} s'.format(time.time()-start))
+        print('[1] Loaded in  {:.3f} s'.format(time.time() - start))
 
     def predict(self, image, initial_dimens):
         """
@@ -42,14 +42,10 @@ class FaceDetection:
         """
         image_input = self.preprocess_input(image)
         input_dict = {self.input_name: image_input}
-        start = time.time()
         outputs = self.net.infer(input_dict)
         out = self.preprocess_outputs(outputs)
         outs = self.draw_outputs(out, image, initial_dimens)
-        # self.performance_counter(0)
         return outs
-
-
 
     def performance_counter(self, request_id):
         """
@@ -58,10 +54,6 @@ class FaceDetection:
         :param request_id: Index of Infer request value. Limited to device capabilities
         :return: Performance of the layer
         """
-
-        # perf_count = self.model.requests[request_id].get_perf_counts()
-        # print('Performance count :')
-        # print(self.net.requests[0].get_perf_counts())
         perf_count = self.net.requests[request_id].get_perf_counts()
         return perf_count
 

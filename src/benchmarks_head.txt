@@ -1,0 +1,436 @@
+[Step 1/11] Parsing and validating input arguments
+[ WARNING ]  -nstreams default value is determined automatically for a device. Although the automatic selection usually provides a reasonable performance, but it still may be non-optimal for some cases, for more information look at README. 
+[Step 2/11] Loading Inference Engine
+[ INFO ] InferenceEngine:
+         API version............. 2.1.42025
+[ INFO ] Device info
+         CPU
+         MKLDNNPlugin............ version 2.1
+         Build................... 42025
+
+[Step 3/11] Reading the Intermediate Representation network
+[ INFO ] Read network took 552.81 ms
+[Step 4/11] Resizing network to match image sizes and given batch
+[ INFO ] Network batch size: 1
+[Step 5/11] Configuring input of the model
+[Step 6/11] Setting device configuration
+[Step 7/11] Loading the model to the device
+[ INFO ] Load network took 351.95 ms
+[Step 8/11] Setting optimal runtime parameters
+[Step 9/11] Creating infer requests and filling input blobs with images
+[ INFO ] Network input 'data' precision U8, dimensions (NCHW): 1 3 60 60
+[ WARNING ] Some image input files will be duplicated: 4 files are required, but only 1 were provided
+[ INFO ] Infer Request 0 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((60, 60))
+[ INFO ] Infer Request 1 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((60, 60))
+[ INFO ] Infer Request 2 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((60, 60))
+[ INFO ] Infer Request 3 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((60, 60))
+[Step 10/11] Measuring performance (Start inference asyncronously, 4 inference requests using 4 streams for CPU, limits: 60000 ms duration)
+
+[Step 11/11] Dumping statistics report
+[ INFO ] Performance counts for 0-th infer request
+data_U8_FP32_Add_/Fused_Add_  EXECUTED       layerType: Reorder            realTime: 22        cpu: 22             execType: jit_uni_I8
+Add_/Fused_Add_               EXECUTED       layerType: ScaleShift         realTime: 40        cpu: 40             execType: jit_sse42_FP32
+conv1                         EXECUTED       layerType: Convolution        realTime: 1256      cpu: 1256           execType: jit_sse42_FP32
+relu_conv1                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn1/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool1                         EXECUTED       layerType: Convolution        realTime: 818       cpu: 818            execType: jit_avx2_FP32
+conv2                         EXECUTED       layerType: Convolution        realTime: 2401      cpu: 2401           execType: jit_sse42_FP32
+relu_conv2                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn2/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool2                         EXECUTED       layerType: Pooling            realTime: 94        cpu: 94             execType: jit_avx_FP32
+conv3                         EXECUTED       layerType: Convolution        realTime: 4367      cpu: 4367           execType: jit_sse42_FP32
+relu_conv3                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn3/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool3                         EXECUTED       layerType: Convolution        realTime: 635       cpu: 635            execType: jit_avx2_FP32
+conv4                         EXECUTED       layerType: Convolution        realTime: 1155      cpu: 1155           execType: jit_sse42_FP32
+relu_conv4                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn4/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool4                         EXECUTED       layerType: Pooling            realTime: 21        cpu: 21             execType: jit_avx_FP32
+conv5                         EXECUTED       layerType: Convolution        realTime: 1061      cpu: 1061           execType: jit_sse42_FP32
+relu_conv5                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn5/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+conv_fm                       EXECUTED       layerType: Convolution        realTime: 1171      cpu: 1171           execType: jit_avx2_FP32
+angle_p                       EXECUTED       layerType: Convolution        realTime: 119       cpu: 119            execType: jit_sse42_1x1_FP32
+relu_p_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_p/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_p_fc                    EXECUTED       layerType: FullyConnected     realTime: 36        cpu: 36             execType: jit_gemm_FP32
+out_angle_p_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+angle_r/Fused_Add_            EXECUTED       layerType: Convolution        realTime: 116       cpu: 116            execType: jit_avx2_1x1_FP32
+relu_r_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+angle_r_fc                    EXECUTED       layerType: FullyConnected     realTime: 9         cpu: 9              execType: jit_gemm_FP32
+out_angle_r_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+angle_y                       EXECUTED       layerType: Convolution        realTime: 185       cpu: 185            execType: jit_sse42_1x1_FP32
+relu_y_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_y/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_y_fc                    EXECUTED       layerType: FullyConnected     realTime: 9         cpu: 9              execType: jit_gemm_FP32
+out_angle_y_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     13515 microseconds
+Total CPU time: 13515 microseconds
+
+[ INFO ] Performance counts for 1-th infer request
+data_U8_FP32_Add_/Fused_Add_  EXECUTED       layerType: Reorder            realTime: 21        cpu: 21             execType: jit_uni_I8
+Add_/Fused_Add_               EXECUTED       layerType: ScaleShift         realTime: 26        cpu: 26             execType: jit_sse42_FP32
+conv1                         EXECUTED       layerType: Convolution        realTime: 1311      cpu: 1311           execType: jit_sse42_FP32
+relu_conv1                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn1/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool1                         EXECUTED       layerType: Convolution        realTime: 827       cpu: 827            execType: jit_avx2_FP32
+conv2                         EXECUTED       layerType: Convolution        realTime: 2364      cpu: 2364           execType: jit_sse42_FP32
+relu_conv2                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn2/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool2                         EXECUTED       layerType: Pooling            realTime: 109       cpu: 109            execType: jit_avx_FP32
+conv3                         EXECUTED       layerType: Convolution        realTime: 4361      cpu: 4361           execType: jit_sse42_FP32
+relu_conv3                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn3/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool3                         EXECUTED       layerType: Convolution        realTime: 632       cpu: 632            execType: jit_avx2_FP32
+conv4                         EXECUTED       layerType: Convolution        realTime: 1147      cpu: 1147           execType: jit_sse42_FP32
+relu_conv4                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn4/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool4                         EXECUTED       layerType: Pooling            realTime: 27        cpu: 27             execType: jit_avx_FP32
+conv5                         EXECUTED       layerType: Convolution        realTime: 1009      cpu: 1009           execType: jit_sse42_FP32
+relu_conv5                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn5/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+conv_fm                       EXECUTED       layerType: Convolution        realTime: 1155      cpu: 1155           execType: jit_avx2_FP32
+angle_p                       EXECUTED       layerType: Convolution        realTime: 142       cpu: 142            execType: jit_sse42_1x1_FP32
+relu_p_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_p/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_p_fc                    EXECUTED       layerType: FullyConnected     realTime: 19        cpu: 19             execType: jit_gemm_FP32
+out_angle_p_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+angle_r/Fused_Add_            EXECUTED       layerType: Convolution        realTime: 103       cpu: 103            execType: jit_avx2_1x1_FP32
+relu_r_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+angle_r_fc                    EXECUTED       layerType: FullyConnected     realTime: 13        cpu: 13             execType: jit_gemm_FP32
+out_angle_r_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+angle_y                       EXECUTED       layerType: Convolution        realTime: 171       cpu: 171            execType: jit_sse42_1x1_FP32
+relu_y_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_y/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_y_fc                    EXECUTED       layerType: FullyConnected     realTime: 9         cpu: 9              execType: jit_gemm_FP32
+out_angle_y_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     13446 microseconds
+Total CPU time: 13446 microseconds
+
+[ INFO ] Performance counts for 2-th infer request
+data_U8_FP32_Add_/Fused_Add_  EXECUTED       layerType: Reorder            realTime: 30        cpu: 30             execType: jit_uni_I8
+Add_/Fused_Add_               EXECUTED       layerType: ScaleShift         realTime: 32        cpu: 32             execType: jit_sse42_FP32
+conv1                         EXECUTED       layerType: Convolution        realTime: 1199      cpu: 1199           execType: jit_sse42_FP32
+relu_conv1                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn1/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool1                         EXECUTED       layerType: Convolution        realTime: 823       cpu: 823            execType: jit_avx2_FP32
+conv2                         EXECUTED       layerType: Convolution        realTime: 2425      cpu: 2425           execType: jit_sse42_FP32
+relu_conv2                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn2/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool2                         EXECUTED       layerType: Pooling            realTime: 99        cpu: 99             execType: jit_avx_FP32
+conv3                         EXECUTED       layerType: Convolution        realTime: 4385      cpu: 4385           execType: jit_sse42_FP32
+relu_conv3                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn3/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool3                         EXECUTED       layerType: Convolution        realTime: 615       cpu: 615            execType: jit_avx2_FP32
+conv4                         EXECUTED       layerType: Convolution        realTime: 1102      cpu: 1102           execType: jit_sse42_FP32
+relu_conv4                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn4/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool4                         EXECUTED       layerType: Pooling            realTime: 21        cpu: 21             execType: jit_avx_FP32
+conv5                         EXECUTED       layerType: Convolution        realTime: 1058      cpu: 1058           execType: jit_sse42_FP32
+relu_conv5                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn5/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+conv_fm                       EXECUTED       layerType: Convolution        realTime: 1140      cpu: 1140           execType: jit_avx2_FP32
+angle_p                       EXECUTED       layerType: Convolution        realTime: 138       cpu: 138            execType: jit_sse42_1x1_FP32
+relu_p_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_p/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_p_fc                    EXECUTED       layerType: FullyConnected     realTime: 18        cpu: 18             execType: jit_gemm_FP32
+out_angle_p_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+angle_r/Fused_Add_            EXECUTED       layerType: Convolution        realTime: 102       cpu: 102            execType: jit_avx2_1x1_FP32
+relu_r_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+angle_r_fc                    EXECUTED       layerType: FullyConnected     realTime: 7         cpu: 7              execType: jit_gemm_FP32
+out_angle_r_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+angle_y                       EXECUTED       layerType: Convolution        realTime: 145       cpu: 145            execType: jit_sse42_1x1_FP32
+relu_y_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_y/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_y_fc                    EXECUTED       layerType: FullyConnected     realTime: 12        cpu: 12             execType: jit_gemm_FP32
+out_angle_y_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     13351 microseconds
+Total CPU time: 13351 microseconds
+
+[ INFO ] Performance counts for 3-th infer request
+data_U8_FP32_Add_/Fused_Add_  EXECUTED       layerType: Reorder            realTime: 22        cpu: 22             execType: jit_uni_I8
+Add_/Fused_Add_               EXECUTED       layerType: ScaleShift         realTime: 40        cpu: 40             execType: jit_sse42_FP32
+conv1                         EXECUTED       layerType: Convolution        realTime: 1256      cpu: 1256           execType: jit_sse42_FP32
+relu_conv1                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn1/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool1                         EXECUTED       layerType: Convolution        realTime: 818       cpu: 818            execType: jit_avx2_FP32
+conv2                         EXECUTED       layerType: Convolution        realTime: 2401      cpu: 2401           execType: jit_sse42_FP32
+relu_conv2                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn2/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool2                         EXECUTED       layerType: Pooling            realTime: 94        cpu: 94             execType: jit_avx_FP32
+conv3                         EXECUTED       layerType: Convolution        realTime: 4367      cpu: 4367           execType: jit_sse42_FP32
+relu_conv3                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn3/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool3                         EXECUTED       layerType: Convolution        realTime: 635       cpu: 635            execType: jit_avx2_FP32
+conv4                         EXECUTED       layerType: Convolution        realTime: 1155      cpu: 1155           execType: jit_sse42_FP32
+relu_conv4                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn4/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool4                         EXECUTED       layerType: Pooling            realTime: 21        cpu: 21             execType: jit_avx_FP32
+conv5                         EXECUTED       layerType: Convolution        realTime: 1061      cpu: 1061           execType: jit_sse42_FP32
+relu_conv5                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn5/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+conv_fm                       EXECUTED       layerType: Convolution        realTime: 1171      cpu: 1171           execType: jit_avx2_FP32
+angle_p                       EXECUTED       layerType: Convolution        realTime: 119       cpu: 119            execType: jit_sse42_1x1_FP32
+relu_p_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_p/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_p_fc                    EXECUTED       layerType: FullyConnected     realTime: 36        cpu: 36             execType: jit_gemm_FP32
+out_angle_p_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+angle_r/Fused_Add_            EXECUTED       layerType: Convolution        realTime: 116       cpu: 116            execType: jit_avx2_1x1_FP32
+relu_r_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+angle_r_fc                    EXECUTED       layerType: FullyConnected     realTime: 9         cpu: 9              execType: jit_gemm_FP32
+out_angle_r_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+angle_y                       EXECUTED       layerType: Convolution        realTime: 185       cpu: 185            execType: jit_sse42_1x1_FP32
+relu_y_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_y/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_y_fc                    EXECUTED       layerType: FullyConnected     realTime: 9         cpu: 9              execType: jit_gemm_FP32
+out_angle_y_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     13515 microseconds
+Total CPU time: 13515 microseconds
+
+Count:      16948 iterations
+Duration:   60009.26 ms
+Latency:    10.90 ms
+Throughput: 282.42 FPS
+[Step 1/11] Parsing and validating input arguments
+[ WARNING ]  -nstreams default value is determined automatically for a device. Although the automatic selection usually provides a reasonable performance, but it still may be non-optimal for some cases, for more information look at README. 
+[Step 2/11] Loading Inference Engine
+[ INFO ] InferenceEngine:
+         API version............. 2.1.42025
+[ INFO ] Device info
+         CPU
+         MKLDNNPlugin............ version 2.1
+         Build................... 42025
+
+[Step 3/11] Reading the Intermediate Representation network
+[ INFO ] Read network took 854.01 ms
+[Step 4/11] Resizing network to match image sizes and given batch
+[ INFO ] Network batch size: 1
+[Step 5/11] Configuring input of the model
+[Step 6/11] Setting device configuration
+[Step 7/11] Loading the model to the device
+[ INFO ] Load network took 378.00 ms
+[Step 8/11] Setting optimal runtime parameters
+[Step 9/11] Creating infer requests and filling input blobs with images
+[ INFO ] Network input 'data' precision U8, dimensions (NCHW): 1 3 60 60
+[ WARNING ] Some image input files will be duplicated: 4 files are required, but only 1 were provided
+[ INFO ] Infer Request 0 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((60, 60))
+[ INFO ] Infer Request 1 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((60, 60))
+[ INFO ] Infer Request 2 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((60, 60))
+[ INFO ] Infer Request 3 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((60, 60))
+[Step 10/11] Measuring performance (Start inference asyncronously, 4 inference requests using 4 streams for CPU, limits: 60000 ms duration)
+
+[Step 11/11] Dumping statistics report
+[ INFO ] Performance counts for 0-th infer request
+data_U8_FP32_Add_/Fused_Add_  EXECUTED       layerType: Reorder            realTime: 36        cpu: 36             execType: jit_uni_I8
+Add_/Fused_Add_               EXECUTED       layerType: ScaleShift         realTime: 45        cpu: 45             execType: jit_sse42_FP32
+conv1                         EXECUTED       layerType: Convolution        realTime: 1469      cpu: 1469           execType: jit_sse42_FP32
+relu_conv1                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn1/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool1                         EXECUTED       layerType: Convolution        realTime: 941       cpu: 941            execType: jit_avx2_FP32
+conv2                         EXECUTED       layerType: Convolution        realTime: 2654      cpu: 2654           execType: jit_sse42_FP32
+relu_conv2                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn2/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool2                         EXECUTED       layerType: Pooling            realTime: 118       cpu: 118            execType: jit_avx_FP32
+conv3                         EXECUTED       layerType: Convolution        realTime: 4715      cpu: 4715           execType: jit_sse42_FP32
+relu_conv3                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn3/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool3                         EXECUTED       layerType: Convolution        realTime: 684       cpu: 684            execType: jit_avx2_FP32
+conv4                         EXECUTED       layerType: Convolution        realTime: 1221      cpu: 1221           execType: jit_sse42_FP32
+relu_conv4                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn4/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool4                         EXECUTED       layerType: Pooling            realTime: 23        cpu: 23             execType: jit_avx_FP32
+conv5                         EXECUTED       layerType: Convolution        realTime: 1214      cpu: 1214           execType: jit_sse42_FP32
+relu_conv5                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn5/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+conv_fm                       EXECUTED       layerType: Convolution        realTime: 1556      cpu: 1556           execType: jit_avx2_FP32
+angle_p                       EXECUTED       layerType: Convolution        realTime: 236       cpu: 236            execType: jit_sse42_1x1_FP32
+relu_p_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_p/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_p_fc                    EXECUTED       layerType: FullyConnected     realTime: 25        cpu: 25             execType: jit_gemm_FP32
+out_angle_p_fc                EXECUTED       layerType: Output             realTime: 1         cpu: 1              execType: unknown_FP32
+angle_r/Fused_Add_            EXECUTED       layerType: Convolution        realTime: 125       cpu: 125            execType: jit_avx2_1x1_FP32
+relu_r_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+angle_r_fc                    EXECUTED       layerType: FullyConnected     realTime: 27        cpu: 27             execType: jit_gemm_FP32
+out_angle_r_fc                EXECUTED       layerType: Output             realTime: 2         cpu: 2              execType: unknown_FP32
+angle_y                       EXECUTED       layerType: Convolution        realTime: 251       cpu: 251            execType: jit_sse42_1x1_FP32
+relu_y_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_y/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_y_fc                    EXECUTED       layerType: FullyConnected     realTime: 51        cpu: 51             execType: jit_gemm_FP32
+out_angle_y_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     15394 microseconds
+Total CPU time: 15394 microseconds
+
+[ INFO ] Performance counts for 1-th infer request
+data_U8_FP32_Add_/Fused_Add_  EXECUTED       layerType: Reorder            realTime: 30        cpu: 30             execType: jit_uni_I8
+Add_/Fused_Add_               EXECUTED       layerType: ScaleShift         realTime: 45        cpu: 45             execType: jit_sse42_FP32
+conv1                         EXECUTED       layerType: Convolution        realTime: 1447      cpu: 1447           execType: jit_sse42_FP32
+relu_conv1                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn1/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool1                         EXECUTED       layerType: Convolution        realTime: 896       cpu: 896            execType: jit_avx2_FP32
+conv2                         EXECUTED       layerType: Convolution        realTime: 2760      cpu: 2760           execType: jit_sse42_FP32
+relu_conv2                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn2/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool2                         EXECUTED       layerType: Pooling            realTime: 120       cpu: 120            execType: jit_avx_FP32
+conv3                         EXECUTED       layerType: Convolution        realTime: 4746      cpu: 4746           execType: jit_sse42_FP32
+relu_conv3                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn3/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool3                         EXECUTED       layerType: Convolution        realTime: 670       cpu: 670            execType: jit_avx2_FP32
+conv4                         EXECUTED       layerType: Convolution        realTime: 1296      cpu: 1296           execType: jit_sse42_FP32
+relu_conv4                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn4/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool4                         EXECUTED       layerType: Pooling            realTime: 23        cpu: 23             execType: jit_avx_FP32
+conv5                         EXECUTED       layerType: Convolution        realTime: 1157      cpu: 1157           execType: jit_sse42_FP32
+relu_conv5                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn5/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+conv_fm                       EXECUTED       layerType: Convolution        realTime: 1588      cpu: 1588           execType: jit_avx2_FP32
+angle_p                       EXECUTED       layerType: Convolution        realTime: 167       cpu: 167            execType: jit_sse42_1x1_FP32
+relu_p_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_p/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_p_fc                    EXECUTED       layerType: FullyConnected     realTime: 22        cpu: 22             execType: jit_gemm_FP32
+out_angle_p_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+angle_r/Fused_Add_            EXECUTED       layerType: Convolution        realTime: 152       cpu: 152            execType: jit_avx2_1x1_FP32
+relu_r_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+angle_r_fc                    EXECUTED       layerType: FullyConnected     realTime: 29        cpu: 29             execType: jit_gemm_FP32
+out_angle_r_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+angle_y                       EXECUTED       layerType: Convolution        realTime: 189       cpu: 189            execType: jit_sse42_1x1_FP32
+relu_y_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_y/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_y_fc                    EXECUTED       layerType: FullyConnected     realTime: 31        cpu: 31             execType: jit_gemm_FP32
+out_angle_y_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     15368 microseconds
+Total CPU time: 15368 microseconds
+
+[ INFO ] Performance counts for 2-th infer request
+data_U8_FP32_Add_/Fused_Add_  EXECUTED       layerType: Reorder            realTime: 26        cpu: 26             execType: jit_uni_I8
+Add_/Fused_Add_               EXECUTED       layerType: ScaleShift         realTime: 29        cpu: 29             execType: jit_sse42_FP32
+conv1                         EXECUTED       layerType: Convolution        realTime: 1401      cpu: 1401           execType: jit_sse42_FP32
+relu_conv1                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn1/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool1                         EXECUTED       layerType: Convolution        realTime: 948       cpu: 948            execType: jit_avx2_FP32
+conv2                         EXECUTED       layerType: Convolution        realTime: 2639      cpu: 2639           execType: jit_sse42_FP32
+relu_conv2                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn2/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool2                         EXECUTED       layerType: Pooling            realTime: 106       cpu: 106            execType: jit_avx_FP32
+conv3                         EXECUTED       layerType: Convolution        realTime: 4732      cpu: 4732           execType: jit_sse42_FP32
+relu_conv3                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn3/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool3                         EXECUTED       layerType: Convolution        realTime: 717       cpu: 717            execType: jit_avx2_FP32
+conv4                         EXECUTED       layerType: Convolution        realTime: 1269      cpu: 1269           execType: jit_sse42_FP32
+relu_conv4                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn4/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool4                         EXECUTED       layerType: Pooling            realTime: 24        cpu: 24             execType: jit_avx_FP32
+conv5                         EXECUTED       layerType: Convolution        realTime: 1137      cpu: 1137           execType: jit_sse42_FP32
+relu_conv5                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn5/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+conv_fm                       EXECUTED       layerType: Convolution        realTime: 1655      cpu: 1655           execType: jit_avx2_FP32
+angle_p                       EXECUTED       layerType: Convolution        realTime: 208       cpu: 208            execType: jit_sse42_1x1_FP32
+relu_p_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_p/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_p_fc                    EXECUTED       layerType: FullyConnected     realTime: 67        cpu: 67             execType: jit_gemm_FP32
+out_angle_p_fc                EXECUTED       layerType: Output             realTime: 2         cpu: 2              execType: unknown_FP32
+angle_r/Fused_Add_            EXECUTED       layerType: Convolution        realTime: 124       cpu: 124            execType: jit_avx2_1x1_FP32
+relu_r_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+angle_r_fc                    EXECUTED       layerType: FullyConnected     realTime: 15        cpu: 15             execType: jit_gemm_FP32
+out_angle_r_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+angle_y                       EXECUTED       layerType: Convolution        realTime: 224       cpu: 224            execType: jit_sse42_1x1_FP32
+relu_y_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_y/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_y_fc                    EXECUTED       layerType: FullyConnected     realTime: 15        cpu: 15             execType: jit_gemm_FP32
+out_angle_y_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     15338 microseconds
+Total CPU time: 15338 microseconds
+
+[ INFO ] Performance counts for 3-th infer request
+data_U8_FP32_Add_/Fused_Add_  EXECUTED       layerType: Reorder            realTime: 74        cpu: 74             execType: jit_uni_I8
+Add_/Fused_Add_               EXECUTED       layerType: ScaleShift         realTime: 26        cpu: 26             execType: jit_sse42_FP32
+conv1                         EXECUTED       layerType: Convolution        realTime: 1501      cpu: 1501           execType: jit_sse42_FP32
+relu_conv1                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn1/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool1                         EXECUTED       layerType: Convolution        realTime: 892       cpu: 892            execType: jit_avx2_FP32
+conv2                         EXECUTED       layerType: Convolution        realTime: 2665      cpu: 2665           execType: jit_sse42_FP32
+relu_conv2                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn2/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool2                         EXECUTED       layerType: Pooling            realTime: 94        cpu: 94             execType: jit_avx_FP32
+conv3                         EXECUTED       layerType: Convolution        realTime: 4649      cpu: 4649           execType: jit_sse42_FP32
+relu_conv3                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn3/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool3                         EXECUTED       layerType: Convolution        realTime: 702       cpu: 702            execType: jit_avx2_FP32
+conv4                         EXECUTED       layerType: Convolution        realTime: 1256      cpu: 1256           execType: jit_sse42_FP32
+relu_conv4                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn4/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+pool4                         EXECUTED       layerType: Pooling            realTime: 22        cpu: 22             execType: jit_avx_FP32
+conv5                         EXECUTED       layerType: Convolution        realTime: 1121      cpu: 1121           execType: jit_sse42_FP32
+relu_conv5                    NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn5/variance/Fused_Add_       NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+conv_fm                       EXECUTED       layerType: Convolution        realTime: 1606      cpu: 1606           execType: jit_avx2_FP32
+angle_p                       EXECUTED       layerType: Convolution        realTime: 217       cpu: 217            execType: jit_sse42_1x1_FP32
+relu_p_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_p/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_p_fc                    EXECUTED       layerType: FullyConnected     realTime: 21        cpu: 21             execType: jit_gemm_FP32
+out_angle_p_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+angle_r/Fused_Add_            EXECUTED       layerType: Convolution        realTime: 148       cpu: 148            execType: jit_avx2_1x1_FP32
+relu_r_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+angle_r_fc                    EXECUTED       layerType: FullyConnected     realTime: 9         cpu: 9              execType: jit_gemm_FP32
+out_angle_r_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+angle_y                       EXECUTED       layerType: Convolution        realTime: 233       cpu: 233            execType: jit_sse42_1x1_FP32
+relu_y_1                      NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+bn_y/variance/Fused_Add_      NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+angle_y_fc                    EXECUTED       layerType: FullyConnected     realTime: 18        cpu: 18             execType: jit_gemm_FP32
+out_angle_y_fc                NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     15254 microseconds
+Total CPU time: 15254 microseconds
+
+Count:      14788 iterations
+Duration:   60028.53 ms
+Latency:    11.62 ms
+Throughput: 246.35 FPS
+[Step 1/11] Parsing and validating input arguments
+[ WARNING ]  -nstreams default value is determined automatically for a device. Although the automatic selection usually provides a reasonable performance, but it still may be non-optimal for some cases, for more information look at README. 
+[Step 2/11] Loading Inference Engine
+[ INFO ] InferenceEngine:
+         API version............. 2.1.42025
+[ INFO ] Device info
+         CPU
+         MKLDNNPlugin............ version 2.1
+         Build................... 42025
+
+[Step 3/11] Reading the Intermediate Representation network
+[ INFO ] Read network took 660.82 ms
+[Step 4/11] Resizing network to match image sizes and given batch
+[ INFO ] Network batch size: 1
+[Step 5/11] Configuring input of the model
+[Step 6/11] Setting device configuration
+[Step 7/11] Loading the model to the device
+[ INFO ] Load network took 367.33 ms
+[Step 8/11] Setting optimal runtime parameters
+[Step 9/11] Creating infer requests and filling input blobs with images
+[ INFO ] Network input 'data' precision U8, dimensions (NCHW): 1 3 60 60
+[ WARNING ] Some image input files will be duplicated: 4 files are required, but only 1 were provided
+[ INFO ] Infer Request 0 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((60, 60))
+[ INFO ] Infer Request 1 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((60, 60))
+[ INFO ] Infer Request 2 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((60, 60))
+[ INFO ] Infer Request 3 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((60, 60))

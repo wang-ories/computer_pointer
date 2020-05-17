@@ -81,8 +81,15 @@ class LandMarksDetection:
 
         return left, right
 
-    def check_model(self):
-        pass
+    def performance_counter(self, request_id):
+        """
+        Queries performance measures per layer to get feedback of what is the
+        most time consuming layer.
+        :param request_id: Index of Infer request value. Limited to device capabilities
+        :return: Performance of the layer
+        """
+        perf_count = self.net.requests[request_id].get_perf_counts()
+        return perf_count
 
     def preprocess_outputs(self, outputs):
 

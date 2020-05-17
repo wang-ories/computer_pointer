@@ -1,2 +1,0 @@
-Frame Per Second  : 30
-Model load time  : 0.6511731147766113

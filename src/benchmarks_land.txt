@@ -1,0 +1,803 @@
+[Step 1/11] Parsing and validating input arguments
+[ WARNING ]  -nstreams default value is determined automatically for a device. Although the automatic selection usually provides a reasonable performance, but it still may be non-optimal for some cases, for more information look at README. 
+[Step 2/11] Loading Inference Engine
+[ INFO ] InferenceEngine:
+         API version............. 2.1.42025
+[ INFO ] Device info
+         CPU
+         MKLDNNPlugin............ version 2.1
+         Build................... 42025
+
+[Step 3/11] Reading the Intermediate Representation network
+[ INFO ] Read network took 411.23 ms
+[Step 4/11] Resizing network to match image sizes and given batch
+[ INFO ] Network batch size: 1
+[Step 5/11] Configuring input of the model
+[Step 6/11] Setting device configuration
+[Step 7/11] Loading the model to the device
+[ INFO ] Load network took 265.66 ms
+[Step 8/11] Setting optimal runtime parameters
+[Step 9/11] Creating infer requests and filling input blobs with images
+[ INFO ] Network input '0' precision U8, dimensions (NCHW): 1 3 48 48
+[ WARNING ] Some image input files will be duplicated: 4 files are required, but only 1 were provided
+[ INFO ] Infer Request 0 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((48, 48))
+[ INFO ] Infer Request 1 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((48, 48))
+[ INFO ] Infer Request 2 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((48, 48))
+[ INFO ] Infer Request 3 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((48, 48))
+[Step 10/11] Measuring performance (Start inference asyncronously, 4 inference requests using 4 streams for CPU, limits: 60000 ms duration)
+
+[Step 11/11] Dumping statistics report
+[ INFO ] Performance counts for 0-th infer request
+0_U8_FP32_67/variance/Fuse... EXECUTED       layerType: Reorder            realTime: 20        cpu: 20             execType: jit_uni_I8
+67/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 16        cpu: 16             execType: jit_sse42_FP32
+68                            EXECUTED       layerType: Convolution        realTime: 208       cpu: 208            execType: jit_avx2_FP32
+69                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+70                            EXECUTED       layerType: Pooling            realTime: 48        cpu: 48             execType: jit_avx_FP32
+71/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 13        cpu: 13             execType: jit_sse42_FP32
+72                            EXECUTED       layerType: Convolution        realTime: 425       cpu: 425            execType: jit_avx2_FP32
+73                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+74                            EXECUTED       layerType: Pooling            realTime: 26        cpu: 26             execType: jit_avx_FP32
+75/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 8         cpu: 8              execType: jit_sse42_FP32
+76                            EXECUTED       layerType: Convolution        realTime: 398       cpu: 398            execType: jit_avx2_FP32
+77                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+78                            EXECUTED       layerType: Pooling            realTime: 23        cpu: 23             execType: jit_avx_FP32
+79/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 8         cpu: 8              execType: jit_sse42_FP32
+80                            EXECUTED       layerType: Convolution        realTime: 349       cpu: 349            execType: jit_sse42_FP32
+81                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+82/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+83                            EXECUTED       layerType: Convolution        realTime: 689       cpu: 689            execType: jit_sse42_FP32
+84                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+85/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86                            EXECUTED       layerType: Convolution        realTime: 13        cpu: 13             execType: jit_sse42_dw_FP32
+87                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+88/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+89                            EXECUTED       layerType: Convolution        realTime: 20        cpu: 20             execType: jit_sse42_1x1_FP32
+90                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+91/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+92                            EXECUTED       layerType: Convolution        realTime: 13        cpu: 13             execType: jit_avx2_1x1_FP32
+93                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+94                            EXECUTED       layerType: Convolution        realTime: 12        cpu: 12             execType: jit_sse42_1x1_FP32
+95                            NOT_RUN        layerType: Sigmoid            realTime: 0         cpu: 0              execType: undef     
+94_nChw8c_nchw_out_95         EXECUTED       layerType: Reorder            realTime: 9         cpu: 9              execType: ref_any_FP32
+out_95                        NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     2298 microseconds
+Total CPU time: 2298 microseconds
+
+[ INFO ] Performance counts for 1-th infer request
+0_U8_FP32_67/variance/Fuse... EXECUTED       layerType: Reorder            realTime: 20        cpu: 20             execType: jit_uni_I8
+67/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 16        cpu: 16             execType: jit_sse42_FP32
+68                            EXECUTED       layerType: Convolution        realTime: 208       cpu: 208            execType: jit_avx2_FP32
+69                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+70                            EXECUTED       layerType: Pooling            realTime: 48        cpu: 48             execType: jit_avx_FP32
+71/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 13        cpu: 13             execType: jit_sse42_FP32
+72                            EXECUTED       layerType: Convolution        realTime: 425       cpu: 425            execType: jit_avx2_FP32
+73                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+74                            EXECUTED       layerType: Pooling            realTime: 26        cpu: 26             execType: jit_avx_FP32
+75/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 8         cpu: 8              execType: jit_sse42_FP32
+76                            EXECUTED       layerType: Convolution        realTime: 398       cpu: 398            execType: jit_avx2_FP32
+77                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+78                            EXECUTED       layerType: Pooling            realTime: 23        cpu: 23             execType: jit_avx_FP32
+79/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 8         cpu: 8              execType: jit_sse42_FP32
+80                            EXECUTED       layerType: Convolution        realTime: 349       cpu: 349            execType: jit_sse42_FP32
+81                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+82/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+83                            EXECUTED       layerType: Convolution        realTime: 689       cpu: 689            execType: jit_sse42_FP32
+84                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+85/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86                            EXECUTED       layerType: Convolution        realTime: 13        cpu: 13             execType: jit_sse42_dw_FP32
+87                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+88/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+89                            EXECUTED       layerType: Convolution        realTime: 20        cpu: 20             execType: jit_sse42_1x1_FP32
+90                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+91/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+92                            EXECUTED       layerType: Convolution        realTime: 13        cpu: 13             execType: jit_avx2_1x1_FP32
+93                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+94                            EXECUTED       layerType: Convolution        realTime: 12        cpu: 12             execType: jit_sse42_1x1_FP32
+95                            NOT_RUN        layerType: Sigmoid            realTime: 0         cpu: 0              execType: undef     
+94_nChw8c_nchw_out_95         EXECUTED       layerType: Reorder            realTime: 9         cpu: 9              execType: ref_any_FP32
+out_95                        NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     2298 microseconds
+Total CPU time: 2298 microseconds
+
+[ INFO ] Performance counts for 2-th infer request
+0_U8_FP32_67/variance/Fuse... EXECUTED       layerType: Reorder            realTime: 17        cpu: 17             execType: jit_uni_I8
+67/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 17        cpu: 17             execType: jit_sse42_FP32
+68                            EXECUTED       layerType: Convolution        realTime: 207       cpu: 207            execType: jit_avx2_FP32
+69                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+70                            EXECUTED       layerType: Pooling            realTime: 49        cpu: 49             execType: jit_avx_FP32
+71/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 12        cpu: 12             execType: jit_sse42_FP32
+72                            EXECUTED       layerType: Convolution        realTime: 417       cpu: 417            execType: jit_avx2_FP32
+73                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+74                            EXECUTED       layerType: Pooling            realTime: 25        cpu: 25             execType: jit_avx_FP32
+75/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 9         cpu: 9              execType: jit_sse42_FP32
+76                            EXECUTED       layerType: Convolution        realTime: 395       cpu: 395            execType: jit_avx2_FP32
+77                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+78                            EXECUTED       layerType: Pooling            realTime: 20        cpu: 20             execType: jit_avx_FP32
+79/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 10        cpu: 10             execType: jit_sse42_FP32
+80                            EXECUTED       layerType: Convolution        realTime: 348       cpu: 348            execType: jit_sse42_FP32
+81                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+82/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+83                            EXECUTED       layerType: Convolution        realTime: 690       cpu: 690            execType: jit_sse42_FP32
+84                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+85/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86                            EXECUTED       layerType: Convolution        realTime: 16        cpu: 16             execType: jit_sse42_dw_FP32
+87                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+88/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+89                            EXECUTED       layerType: Convolution        realTime: 19        cpu: 19             execType: jit_sse42_1x1_FP32
+90                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+91/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+92                            EXECUTED       layerType: Convolution        realTime: 17        cpu: 17             execType: jit_avx2_1x1_FP32
+93                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+94                            EXECUTED       layerType: Convolution        realTime: 10        cpu: 10             execType: jit_sse42_1x1_FP32
+95                            NOT_RUN        layerType: Sigmoid            realTime: 0         cpu: 0              execType: undef     
+94_nChw8c_nchw_out_95         EXECUTED       layerType: Reorder            realTime: 8         cpu: 8              execType: ref_any_FP32
+out_95                        NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     2286 microseconds
+Total CPU time: 2286 microseconds
+
+[ INFO ] Performance counts for 3-th infer request
+0_U8_FP32_67/variance/Fuse... EXECUTED       layerType: Reorder            realTime: 19        cpu: 19             execType: jit_uni_I8
+67/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 15        cpu: 15             execType: jit_sse42_FP32
+68                            EXECUTED       layerType: Convolution        realTime: 207       cpu: 207            execType: jit_avx2_FP32
+69                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+70                            EXECUTED       layerType: Pooling            realTime: 45        cpu: 45             execType: jit_avx_FP32
+71/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 12        cpu: 12             execType: jit_sse42_FP32
+72                            EXECUTED       layerType: Convolution        realTime: 423       cpu: 423            execType: jit_avx2_FP32
+73                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+74                            EXECUTED       layerType: Pooling            realTime: 28        cpu: 28             execType: jit_avx_FP32
+75/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 8         cpu: 8              execType: jit_sse42_FP32
+76                            EXECUTED       layerType: Convolution        realTime: 392       cpu: 392            execType: jit_avx2_FP32
+77                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+78                            EXECUTED       layerType: Pooling            realTime: 22        cpu: 22             execType: jit_avx_FP32
+79/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 7         cpu: 7              execType: jit_sse42_FP32
+80                            EXECUTED       layerType: Convolution        realTime: 350       cpu: 350            execType: jit_sse42_FP32
+81                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+82/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+83                            EXECUTED       layerType: Convolution        realTime: 692       cpu: 692            execType: jit_sse42_FP32
+84                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+85/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86                            EXECUTED       layerType: Convolution        realTime: 16        cpu: 16             execType: jit_sse42_dw_FP32
+87                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+88/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+89                            EXECUTED       layerType: Convolution        realTime: 22        cpu: 22             execType: jit_sse42_1x1_FP32
+90                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+91/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+92                            EXECUTED       layerType: Convolution        realTime: 16        cpu: 16             execType: jit_avx2_1x1_FP32
+93                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+94                            EXECUTED       layerType: Convolution        realTime: 9         cpu: 9              execType: jit_sse42_1x1_FP32
+95                            NOT_RUN        layerType: Sigmoid            realTime: 0         cpu: 0              execType: undef     
+94_nChw8c_nchw_out_95         EXECUTED       layerType: Reorder            realTime: 10        cpu: 10             execType: ref_any_FP32
+out_95                        NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     2293 microseconds
+Total CPU time: 2293 microseconds
+
+Count:      89500 iterations
+Duration:   60003.71 ms
+Latency:    1.78 ms
+Throughput: 1491.57 FPS
+[Step 1/11] Parsing and validating input arguments
+[ WARNING ]  -nstreams default value is determined automatically for a device. Although the automatic selection usually provides a reasonable performance, but it still may be non-optimal for some cases, for more information look at README. 
+[Step 2/11] Loading Inference Engine
+[ INFO ] InferenceEngine:
+         API version............. 2.1.42025
+[ INFO ] Device info
+         CPU
+         MKLDNNPlugin............ version 2.1
+         Build................... 42025
+
+[Step 3/11] Reading the Intermediate Representation network
+[ INFO ] Read network took 415.46 ms
+[Step 4/11] Resizing network to match image sizes and given batch
+[ INFO ] Network batch size: 1
+[Step 5/11] Configuring input of the model
+[Step 6/11] Setting device configuration
+[Step 7/11] Loading the model to the device
+[ INFO ] Load network took 194.75 ms
+[Step 8/11] Setting optimal runtime parameters
+[Step 9/11] Creating infer requests and filling input blobs with images
+[ INFO ] Network input '0' precision U8, dimensions (NCHW): 1 3 48 48
+[ WARNING ] Some image input files will be duplicated: 4 files are required, but only 1 were provided
+[ INFO ] Infer Request 0 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((48, 48))
+[ INFO ] Infer Request 1 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((48, 48))
+[ INFO ] Infer Request 2 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((48, 48))
+[ INFO ] Infer Request 3 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((48, 48))
+[Step 10/11] Measuring performance (Start inference asyncronously, 4 inference requests using 4 streams for CPU, limits: 60000 ms duration)
+
+[Step 11/11] Dumping statistics report
+[ INFO ] Performance counts for 0-th infer request
+0_U8_FP32_67/variance/Fuse... EXECUTED       layerType: Reorder            realTime: 18        cpu: 18             execType: jit_uni_I8
+67/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 27        cpu: 27             execType: jit_sse42_FP32
+68                            EXECUTED       layerType: Convolution        realTime: 215       cpu: 215            execType: jit_avx2_FP32
+69                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+70                            EXECUTED       layerType: Pooling            realTime: 53        cpu: 53             execType: jit_avx_FP32
+71/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 15        cpu: 15             execType: jit_sse42_FP32
+72                            EXECUTED       layerType: Convolution        realTime: 425       cpu: 425            execType: jit_avx2_FP32
+73                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+74                            EXECUTED       layerType: Pooling            realTime: 32        cpu: 32             execType: jit_avx_FP32
+75/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 19        cpu: 19             execType: jit_sse42_FP32
+76                            EXECUTED       layerType: Convolution        realTime: 421       cpu: 421            execType: jit_avx2_FP32
+77                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+78                            EXECUTED       layerType: Pooling            realTime: 22        cpu: 22             execType: jit_avx_FP32
+79/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 10        cpu: 10             execType: jit_sse42_FP32
+80                            EXECUTED       layerType: Convolution        realTime: 392       cpu: 392            execType: jit_sse42_FP32
+81                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+82/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+83                            EXECUTED       layerType: Convolution        realTime: 737       cpu: 737            execType: jit_sse42_FP32
+84                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+85/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86                            EXECUTED       layerType: Convolution        realTime: 14        cpu: 14             execType: jit_sse42_dw_FP32
+87                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+88/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+89                            EXECUTED       layerType: Convolution        realTime: 26        cpu: 26             execType: jit_sse42_1x1_FP32
+90                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+91/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+92                            EXECUTED       layerType: Convolution        realTime: 14        cpu: 14             execType: jit_avx2_1x1_FP32
+93                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+94                            EXECUTED       layerType: Convolution        realTime: 9         cpu: 9              execType: jit_sse42_1x1_FP32
+95                            NOT_RUN        layerType: Sigmoid            realTime: 0         cpu: 0              execType: undef     
+94_nChw8c_nchw_out_95         EXECUTED       layerType: Reorder            realTime: 10        cpu: 10             execType: ref_any_FP32
+out_95                        NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     2459 microseconds
+Total CPU time: 2459 microseconds
+
+[ INFO ] Performance counts for 1-th infer request
+0_U8_FP32_67/variance/Fuse... EXECUTED       layerType: Reorder            realTime: 17        cpu: 17             execType: jit_uni_I8
+67/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 20        cpu: 20             execType: jit_sse42_FP32
+68                            EXECUTED       layerType: Convolution        realTime: 224       cpu: 224            execType: jit_avx2_FP32
+69                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+70                            EXECUTED       layerType: Pooling            realTime: 51        cpu: 51             execType: jit_avx_FP32
+71/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 12        cpu: 12             execType: jit_sse42_FP32
+72                            EXECUTED       layerType: Convolution        realTime: 473       cpu: 473            execType: jit_avx2_FP32
+73                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+74                            EXECUTED       layerType: Pooling            realTime: 27        cpu: 27             execType: jit_avx_FP32
+75/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 11        cpu: 11             execType: jit_sse42_FP32
+76                            EXECUTED       layerType: Convolution        realTime: 412       cpu: 412            execType: jit_avx2_FP32
+77                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+78                            EXECUTED       layerType: Pooling            realTime: 30        cpu: 30             execType: jit_avx_FP32
+79/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 9         cpu: 9              execType: jit_sse42_FP32
+80                            EXECUTED       layerType: Convolution        realTime: 372       cpu: 372            execType: jit_sse42_FP32
+81                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+82/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+83                            EXECUTED       layerType: Convolution        realTime: 748       cpu: 748            execType: jit_sse42_FP32
+84                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+85/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86                            EXECUTED       layerType: Convolution        realTime: 16        cpu: 16             execType: jit_sse42_dw_FP32
+87                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+88/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+89                            EXECUTED       layerType: Convolution        realTime: 19        cpu: 19             execType: jit_sse42_1x1_FP32
+90                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+91/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+92                            EXECUTED       layerType: Convolution        realTime: 16        cpu: 16             execType: jit_avx2_1x1_FP32
+93                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+94                            EXECUTED       layerType: Convolution        realTime: 12        cpu: 12             execType: jit_sse42_1x1_FP32
+95                            NOT_RUN        layerType: Sigmoid            realTime: 0         cpu: 0              execType: undef     
+94_nChw8c_nchw_out_95         EXECUTED       layerType: Reorder            realTime: 9         cpu: 9              execType: ref_any_FP32
+out_95                        NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     2478 microseconds
+Total CPU time: 2478 microseconds
+
+[ INFO ] Performance counts for 2-th infer request
+0_U8_FP32_67/variance/Fuse... EXECUTED       layerType: Reorder            realTime: 18        cpu: 18             execType: jit_uni_I8
+67/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 19        cpu: 19             execType: jit_sse42_FP32
+68                            EXECUTED       layerType: Convolution        realTime: 230       cpu: 230            execType: jit_avx2_FP32
+69                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+70                            EXECUTED       layerType: Pooling            realTime: 55        cpu: 55             execType: jit_avx_FP32
+71/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 14        cpu: 14             execType: jit_sse42_FP32
+72                            EXECUTED       layerType: Convolution        realTime: 432       cpu: 432            execType: jit_avx2_FP32
+73                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+74                            EXECUTED       layerType: Pooling            realTime: 29        cpu: 29             execType: jit_avx_FP32
+75/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 13        cpu: 13             execType: jit_sse42_FP32
+76                            EXECUTED       layerType: Convolution        realTime: 415       cpu: 415            execType: jit_avx2_FP32
+77                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+78                            EXECUTED       layerType: Pooling            realTime: 19        cpu: 19             execType: jit_avx_FP32
+79/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 8         cpu: 8              execType: jit_sse42_FP32
+80                            EXECUTED       layerType: Convolution        realTime: 393       cpu: 393            execType: jit_sse42_FP32
+81                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+82/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+83                            EXECUTED       layerType: Convolution        realTime: 726       cpu: 726            execType: jit_sse42_FP32
+84                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+85/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86                            EXECUTED       layerType: Convolution        realTime: 14        cpu: 14             execType: jit_sse42_dw_FP32
+87                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+88/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+89                            EXECUTED       layerType: Convolution        realTime: 20        cpu: 20             execType: jit_sse42_1x1_FP32
+90                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+91/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+92                            EXECUTED       layerType: Convolution        realTime: 15        cpu: 15             execType: jit_avx2_1x1_FP32
+93                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+94                            EXECUTED       layerType: Convolution        realTime: 14        cpu: 14             execType: jit_sse42_1x1_FP32
+95                            NOT_RUN        layerType: Sigmoid            realTime: 0         cpu: 0              execType: undef     
+94_nChw8c_nchw_out_95         EXECUTED       layerType: Reorder            realTime: 8         cpu: 8              execType: ref_any_FP32
+out_95                        NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     2442 microseconds
+Total CPU time: 2442 microseconds
+
+[ INFO ] Performance counts for 3-th infer request
+0_U8_FP32_67/variance/Fuse... EXECUTED       layerType: Reorder            realTime: 19        cpu: 19             execType: jit_uni_I8
+67/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 17        cpu: 17             execType: jit_sse42_FP32
+68                            EXECUTED       layerType: Convolution        realTime: 217       cpu: 217            execType: jit_avx2_FP32
+69                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+70                            EXECUTED       layerType: Pooling            realTime: 56        cpu: 56             execType: jit_avx_FP32
+71/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 18        cpu: 18             execType: jit_sse42_FP32
+72                            EXECUTED       layerType: Convolution        realTime: 420       cpu: 420            execType: jit_avx2_FP32
+73                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+74                            EXECUTED       layerType: Pooling            realTime: 30        cpu: 30             execType: jit_avx_FP32
+75/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 16        cpu: 16             execType: jit_sse42_FP32
+76                            EXECUTED       layerType: Convolution        realTime: 427       cpu: 427            execType: jit_avx2_FP32
+77                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+78                            EXECUTED       layerType: Pooling            realTime: 23        cpu: 23             execType: jit_avx_FP32
+79/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 8         cpu: 8              execType: jit_sse42_FP32
+80                            EXECUTED       layerType: Convolution        realTime: 374       cpu: 374            execType: jit_sse42_FP32
+81                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+82/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+83                            EXECUTED       layerType: Convolution        realTime: 735       cpu: 735            execType: jit_sse42_FP32
+84                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+85/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86                            EXECUTED       layerType: Convolution        realTime: 17        cpu: 17             execType: jit_sse42_dw_FP32
+87                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+88/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+89                            EXECUTED       layerType: Convolution        realTime: 24        cpu: 24             execType: jit_sse42_1x1_FP32
+90                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+91/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+92                            EXECUTED       layerType: Convolution        realTime: 16        cpu: 16             execType: jit_avx2_1x1_FP32
+93                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+94                            EXECUTED       layerType: Convolution        realTime: 9         cpu: 9              execType: jit_sse42_1x1_FP32
+95                            NOT_RUN        layerType: Sigmoid            realTime: 0         cpu: 0              execType: undef     
+94_nChw8c_nchw_out_95         EXECUTED       layerType: Reorder            realTime: 10        cpu: 10             execType: ref_any_FP32
+out_95                        NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     2436 microseconds
+Total CPU time: 2436 microseconds
+
+Count:      83532 iterations
+Duration:   60010.79 ms
+Latency:    1.79 ms
+Throughput: 1391.95 FPS
+[Step 1/11] Parsing and validating input arguments
+[ WARNING ]  -nstreams default value is determined automatically for a device. Although the automatic selection usually provides a reasonable performance, but it still may be non-optimal for some cases, for more information look at README. 
+[Step 2/11] Loading Inference Engine
+[ INFO ] InferenceEngine:
+         API version............. 2.1.42025
+[ INFO ] Device info
+         CPU
+         MKLDNNPlugin............ version 2.1
+         Build................... 42025
+
+[Step 3/11] Reading the Intermediate Representation network
+[ INFO ] Read network took 125.54 ms
+[Step 4/11] Resizing network to match image sizes and given batch
+[ INFO ] Network batch size: 1
+[Step 5/11] Configuring input of the model
+[Step 6/11] Setting device configuration
+[Step 7/11] Loading the model to the device
+[ INFO ] Load network took 230.28 ms
+[Step 8/11] Setting optimal runtime parameters
+[Step 9/11] Creating infer requests and filling input blobs with images
+[ INFO ] Network input '0' precision U8, dimensions (NCHW): 1 3 48 48
+[ WARNING ] Some image input files will be duplicated: 4 files are required, but only 1 were provided
+[ INFO ] Infer Request 0 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((48, 48))
+[ INFO ] Infer Request 1 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((48, 48))
+[ INFO ] Infer Request 2 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((48, 48))
+[ INFO ] Infer Request 3 filling
+[ INFO ] Prepare image /Users/mac/udacity/nanodegree/computer-pointer-controller/src/starter/src/resources/face.jpeg
+[ WARNING ] Image is resized from ((225, 225)) to ((48, 48))
+[Step 10/11] Measuring performance (Start inference asyncronously, 4 inference requests using 4 streams for CPU, limits: 60000 ms duration)
+
+[Step 11/11] Dumping statistics report
+[ INFO ] Performance counts for 0-th infer request
+327331_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+327331_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+328332_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+328332_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+329333_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+329333_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+330334_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+330334_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+447451_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+447451_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+448452_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+448452_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+449453_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+449453_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+450454_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+450454_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+68/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 32        cpu: 32             execType: jit_sse42_I8
+68/WithoutBiases/fq_input_... EXECUTED       layerType: Reorder            realTime: 16        cpu: 16             execType: jit_uni_I8
+477481_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+477481_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+478482_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+478482_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+479483_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+479483_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+480484_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+480484_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+497501_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+498502_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+499503_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+500504_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3668                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3668_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3680                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3680_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3692                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3692_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3704                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3704_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3716                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3716_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3728                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3728_nchw_Goihw8g_86 NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_I8
+Constant_5894                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+68                            EXECUTED       layerType: Convolution        realTime: 248       cpu: 248            execType: jit_sse42_I8
+69                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+68_nhwc_nChw8c_70             EXECUTED       layerType: Reorder            realTime: 50        cpu: 50             execType: jit_uni_FP32
+70                            EXECUTED       layerType: Pooling            realTime: 54        cpu: 54             execType: jit_avx_FP32
+71/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 11        cpu: 11             execType: jit_sse42_FP32
+72/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 20        cpu: 20             execType: jit_sse42_FP32
+72/WithoutBiases/fq_input_... EXECUTED       layerType: Reorder            realTime: 12        cpu: 12             execType: jit_uni_I8
+Constant_5906                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+72                            EXECUTED       layerType: Convolution        realTime: 362       cpu: 362            execType: jit_sse42_I8
+73                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+74/fq_input_0                 NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+74                            EXECUTED       layerType: Pooling            realTime: 16        cpu: 16             execType: jit_sse42_I8
+76/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 17        cpu: 17             execType: jit_sse42_I8
+Constant_5918                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+76                            EXECUTED       layerType: Convolution        realTime: 333       cpu: 333            execType: jit_sse42_I8
+77                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+78/fq_input_0                 NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+78                            EXECUTED       layerType: Pooling            realTime: 8         cpu: 8              execType: jit_sse42_I8
+80/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 13        cpu: 13             execType: jit_sse42_I8
+Constant_5930                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+80                            EXECUTED       layerType: Convolution        realTime: 162       cpu: 162            execType: jit_sse42_I8
+81                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+83/WithoutBiases/fq_input_0   NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+Constant_5942                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+83                            EXECUTED       layerType: Convolution        realTime: 310       cpu: 310            execType: jit_sse42_I8
+84                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+85/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86/WithoutBiases/fq_input_0   NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+Constant_5954                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+86                            EXECUTED       layerType: Convolution        realTime: 12        cpu: 12             execType: jit_sse42_dw_I8
+87                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+88/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86_nhwc_nChw8c_89             EXECUTED       layerType: Reorder            realTime: 6         cpu: 6              execType: jit_uni_FP32
+Constant_5967                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_5980                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_5993                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_54/O... NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_54/O... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+89                            EXECUTED       layerType: Convolution        realTime: 23        cpu: 23             execType: jit_sse42_1x1_FP32
+90                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+91/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+onnx_initializer_node_62/O... NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_62/O... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+92                            EXECUTED       layerType: Convolution        realTime: 16        cpu: 16             execType: jit_avx2_1x1_FP32
+93                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+onnx_initializer_node_65/O... NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_65/O... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_FP32
+94                            EXECUTED       layerType: Convolution        realTime: 7         cpu: 7              execType: jit_sse42_1x1_FP32
+95                            NOT_RUN        layerType: Sigmoid            realTime: 0         cpu: 0              execType: undef     
+94_nChw8c_nchw_out_95         EXECUTED       layerType: Reorder            realTime: 7         cpu: 7              execType: ref_any_FP32
+out_95                        NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     1735 microseconds
+Total CPU time: 1735 microseconds
+
+[ INFO ] Performance counts for 1-th infer request
+327331_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+327331_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+328332_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+328332_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+329333_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+329333_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+330334_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+330334_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+447451_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+447451_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+448452_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+448452_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+449453_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+449453_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+450454_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+450454_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+68/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 32        cpu: 32             execType: jit_sse42_I8
+68/WithoutBiases/fq_input_... EXECUTED       layerType: Reorder            realTime: 15        cpu: 15             execType: jit_uni_I8
+477481_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+477481_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+478482_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+478482_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+479483_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+479483_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+480484_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+480484_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+497501_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+498502_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+499503_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+500504_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3668                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3668_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3680                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3680_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3692                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3692_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3704                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3704_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3716                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3716_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3728                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3728_nchw_Goihw8g_86 NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_I8
+Constant_5894                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+68                            EXECUTED       layerType: Convolution        realTime: 258       cpu: 258            execType: jit_sse42_I8
+69                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+68_nhwc_nChw8c_70             EXECUTED       layerType: Reorder            realTime: 52        cpu: 52             execType: jit_uni_FP32
+70                            EXECUTED       layerType: Pooling            realTime: 53        cpu: 53             execType: jit_avx_FP32
+71/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 13        cpu: 13             execType: jit_sse42_FP32
+72/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 21        cpu: 21             execType: jit_sse42_FP32
+72/WithoutBiases/fq_input_... EXECUTED       layerType: Reorder            realTime: 12        cpu: 12             execType: jit_uni_I8
+Constant_5906                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+72                            EXECUTED       layerType: Convolution        realTime: 360       cpu: 360            execType: jit_sse42_I8
+73                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+74/fq_input_0                 NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+74                            EXECUTED       layerType: Pooling            realTime: 14        cpu: 14             execType: jit_sse42_I8
+76/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 18        cpu: 18             execType: jit_sse42_I8
+Constant_5918                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+76                            EXECUTED       layerType: Convolution        realTime: 329       cpu: 329            execType: jit_sse42_I8
+77                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+78/fq_input_0                 NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+78                            EXECUTED       layerType: Pooling            realTime: 8         cpu: 8              execType: jit_sse42_I8
+80/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 14        cpu: 14             execType: jit_sse42_I8
+Constant_5930                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+80                            EXECUTED       layerType: Convolution        realTime: 162       cpu: 162            execType: jit_sse42_I8
+81                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+83/WithoutBiases/fq_input_0   NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+Constant_5942                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+83                            EXECUTED       layerType: Convolution        realTime: 310       cpu: 310            execType: jit_sse42_I8
+84                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+85/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86/WithoutBiases/fq_input_0   NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+Constant_5954                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+86                            EXECUTED       layerType: Convolution        realTime: 13        cpu: 13             execType: jit_sse42_dw_I8
+87                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+88/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86_nhwc_nChw8c_89             EXECUTED       layerType: Reorder            realTime: 7         cpu: 7              execType: jit_uni_FP32
+Constant_5967                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_5980                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_5993                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_54/O... NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_54/O... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+89                            EXECUTED       layerType: Convolution        realTime: 22        cpu: 22             execType: jit_sse42_1x1_FP32
+90                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+91/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+onnx_initializer_node_62/O... NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_62/O... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+92                            EXECUTED       layerType: Convolution        realTime: 15        cpu: 15             execType: jit_avx2_1x1_FP32
+93                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+onnx_initializer_node_65/O... NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_65/O... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_FP32
+94                            EXECUTED       layerType: Convolution        realTime: 7         cpu: 7              execType: jit_sse42_1x1_FP32
+95                            NOT_RUN        layerType: Sigmoid            realTime: 0         cpu: 0              execType: undef     
+94_nChw8c_nchw_out_95         EXECUTED       layerType: Reorder            realTime: 8         cpu: 8              execType: ref_any_FP32
+out_95                        NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     1743 microseconds
+Total CPU time: 1743 microseconds
+
+[ INFO ] Performance counts for 2-th infer request
+327331_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+327331_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+328332_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+328332_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+329333_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+329333_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+330334_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+330334_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+447451_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+447451_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+448452_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+448452_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+449453_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+449453_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+450454_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+450454_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+68/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 34        cpu: 34             execType: jit_sse42_I8
+68/WithoutBiases/fq_input_... EXECUTED       layerType: Reorder            realTime: 16        cpu: 16             execType: jit_uni_I8
+477481_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+477481_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+478482_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+478482_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+479483_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+479483_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+480484_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+480484_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+497501_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+498502_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+499503_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+500504_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3668                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3668_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3680                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3680_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3692                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3692_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3704                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3704_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3716                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3716_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3728                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3728_nchw_Goihw8g_86 NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_I8
+Constant_5894                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+68                            EXECUTED       layerType: Convolution        realTime: 250       cpu: 250            execType: jit_sse42_I8
+69                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+68_nhwc_nChw8c_70             EXECUTED       layerType: Reorder            realTime: 47        cpu: 47             execType: jit_uni_FP32
+70                            EXECUTED       layerType: Pooling            realTime: 59        cpu: 59             execType: jit_avx_FP32
+71/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 14        cpu: 14             execType: jit_sse42_FP32
+72/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 19        cpu: 19             execType: jit_sse42_FP32
+72/WithoutBiases/fq_input_... EXECUTED       layerType: Reorder            realTime: 12        cpu: 12             execType: jit_uni_I8
+Constant_5906                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+72                            EXECUTED       layerType: Convolution        realTime: 351       cpu: 351            execType: jit_sse42_I8
+73                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+74/fq_input_0                 NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+74                            EXECUTED       layerType: Pooling            realTime: 15        cpu: 15             execType: jit_sse42_I8
+76/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 18        cpu: 18             execType: jit_sse42_I8
+Constant_5918                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+76                            EXECUTED       layerType: Convolution        realTime: 330       cpu: 330            execType: jit_sse42_I8
+77                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+78/fq_input_0                 NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+78                            EXECUTED       layerType: Pooling            realTime: 8         cpu: 8              execType: jit_sse42_I8
+80/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 13        cpu: 13             execType: jit_sse42_I8
+Constant_5930                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+80                            EXECUTED       layerType: Convolution        realTime: 171       cpu: 171            execType: jit_sse42_I8
+81                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+83/WithoutBiases/fq_input_0   NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+Constant_5942                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+83                            EXECUTED       layerType: Convolution        realTime: 312       cpu: 312            execType: jit_sse42_I8
+84                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+85/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86/WithoutBiases/fq_input_0   NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+Constant_5954                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+86                            EXECUTED       layerType: Convolution        realTime: 13        cpu: 13             execType: jit_sse42_dw_I8
+87                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+88/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86_nhwc_nChw8c_89             EXECUTED       layerType: Reorder            realTime: 7         cpu: 7              execType: jit_uni_FP32
+Constant_5967                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_5980                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_5993                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_54/O... NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_54/O... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+89                            EXECUTED       layerType: Convolution        realTime: 21        cpu: 21             execType: jit_sse42_1x1_FP32
+90                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+91/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+onnx_initializer_node_62/O... NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_62/O... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+92                            EXECUTED       layerType: Convolution        realTime: 16        cpu: 16             execType: jit_avx2_1x1_FP32
+93                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+onnx_initializer_node_65/O... NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_65/O... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_FP32
+94                            EXECUTED       layerType: Convolution        realTime: 7         cpu: 7              execType: jit_sse42_1x1_FP32
+95                            NOT_RUN        layerType: Sigmoid            realTime: 0         cpu: 0              execType: undef     
+94_nChw8c_nchw_out_95         EXECUTED       layerType: Reorder            realTime: 7         cpu: 7              execType: ref_any_FP32
+out_95                        NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     1740 microseconds
+Total CPU time: 1740 microseconds
+
+[ INFO ] Performance counts for 3-th infer request
+327331_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+327331_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+328332_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+328332_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+329333_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+329333_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+330334_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+330334_const_FP32_U8_76/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+447451_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+447451_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+448452_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+448452_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+449453_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+449453_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+450454_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+450454_const_FP32_U8_68/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+68/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 32        cpu: 32             execType: jit_sse42_I8
+68/WithoutBiases/fq_input_... EXECUTED       layerType: Reorder            realTime: 17        cpu: 17             execType: jit_uni_I8
+477481_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+477481_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+478482_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+478482_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+479483_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+479483_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+480484_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+480484_const_FP32_U8_80/Wi... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+497501_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+498502_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+499503_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+500504_const                  NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3668                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3668_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3680                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3680_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3692                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3692_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3704                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3704_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3716                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3716_nchw_OhIw8o4... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_I8
+Constant_3728                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_3728_nchw_Goihw8g_86 NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_I8
+Constant_5894                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+68                            EXECUTED       layerType: Convolution        realTime: 264       cpu: 264            execType: jit_sse42_I8
+69                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+68_nhwc_nChw8c_70             EXECUTED       layerType: Reorder            realTime: 48        cpu: 48             execType: jit_uni_FP32
+70                            EXECUTED       layerType: Pooling            realTime: 49        cpu: 49             execType: jit_avx_FP32
+71/variance/Fused_Add_        EXECUTED       layerType: ScaleShift         realTime: 14        cpu: 14             execType: jit_sse42_FP32
+72/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 16        cpu: 16             execType: jit_sse42_FP32
+72/WithoutBiases/fq_input_... EXECUTED       layerType: Reorder            realTime: 12        cpu: 12             execType: jit_uni_I8
+Constant_5906                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+72                            EXECUTED       layerType: Convolution        realTime: 353       cpu: 353            execType: jit_sse42_I8
+73                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+74/fq_input_0                 NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+74                            EXECUTED       layerType: Pooling            realTime: 16        cpu: 16             execType: jit_sse42_I8
+76/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 17        cpu: 17             execType: jit_sse42_I8
+Constant_5918                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+76                            EXECUTED       layerType: Convolution        realTime: 330       cpu: 330            execType: jit_sse42_I8
+77                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+78/fq_input_0                 NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+78                            EXECUTED       layerType: Pooling            realTime: 10        cpu: 10             execType: jit_sse42_I8
+80/WithoutBiases/fq_input_0   EXECUTED       layerType: FakeQuantize       realTime: 13        cpu: 13             execType: jit_sse42_I8
+Constant_5930                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+80                            EXECUTED       layerType: Convolution        realTime: 158       cpu: 158            execType: jit_sse42_I8
+81                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+83/WithoutBiases/fq_input_0   NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+Constant_5942                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+83                            EXECUTED       layerType: Convolution        realTime: 319       cpu: 319            execType: jit_sse42_I8
+84                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+85/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86/WithoutBiases/fq_input_0   NOT_RUN        layerType: FakeQuantize       realTime: 0         cpu: 0              execType: undef     
+Constant_5954                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+86                            EXECUTED       layerType: Convolution        realTime: 12        cpu: 12             execType: jit_sse42_dw_I8
+87                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+88/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+86_nhwc_nChw8c_89             EXECUTED       layerType: Reorder            realTime: 7         cpu: 7              execType: jit_uni_FP32
+Constant_5967                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_5980                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+Constant_5993                 NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_54/O... NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_54/O... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+89                            EXECUTED       layerType: Convolution        realTime: 21        cpu: 21             execType: jit_sse42_1x1_FP32
+90                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+91/variance/Fused_Add_        NOT_RUN        layerType: ScaleShift         realTime: 0         cpu: 0              execType: undef     
+onnx_initializer_node_62/O... NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_62/O... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: jit_uni_FP32
+92                            EXECUTED       layerType: Convolution        realTime: 18        cpu: 18             execType: jit_avx2_1x1_FP32
+93                            NOT_RUN        layerType: ReLU               realTime: 0         cpu: 0              execType: undef     
+onnx_initializer_node_65/O... NOT_RUN        layerType: Const              realTime: 0         cpu: 0              execType: unknown   
+onnx_initializer_node_65/O... NOT_RUN        layerType: Reorder            realTime: 0         cpu: 0              execType: ref_any_FP32
+94                            EXECUTED       layerType: Convolution        realTime: 7         cpu: 7              execType: jit_sse42_1x1_FP32
+95                            NOT_RUN        layerType: Sigmoid            realTime: 0         cpu: 0              execType: undef     
+94_nChw8c_nchw_out_95         EXECUTED       layerType: Reorder            realTime: 8         cpu: 8              execType: ref_any_FP32
+out_95                        NOT_RUN        layerType: Output             realTime: 0         cpu: 0              execType: unknown_FP32
+Total time:     1741 microseconds
+Total CPU time: 1741 microseconds
+
+Count:      115196 iterations
+Duration:   60015.98 ms
+Latency:    1.45 ms
+Throughput: 1919.42 FPS

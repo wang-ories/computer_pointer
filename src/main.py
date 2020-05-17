@@ -1,4 +1,3 @@
-import numpy as np
 import time
 import json
 import os
@@ -104,12 +103,9 @@ def main(args):
         fps = int(feed.cap.get(cv2.CAP_PROP_FPS))
         counter = 0
         mouse = MouseController('medium', 'fast')
-        cv2.namedWindow(MAIN_WINDOW_NAME, cv2.WINDOW_AUTOSIZE)
-
+        if not toggle:
+            cv2.namedWindow(MAIN_WINDOW_NAME, cv2.WINDOW_AUTOSIZE)
         average_inf_time = 0
-
-        start_inference = time.time()
-
         for frame, _ in feed.next_batch():
             if not _:
                 break
@@ -121,56 +117,57 @@ def main(args):
                 for i in range(len(coord)):
                     xmin, ymin, xmax, ymax = coord[i]
                     cropped_image = frame[ymin:ymax, xmin:xmax]
-
                     # Landmark Inference
                     cropped_left, cropped_right = landmark_model.predict(cropped_image)
                     if cropped_right.shape[0] < 60 or cropped_left.shape[1] < 60:
                         break
                     if cropped_right.shape[1] < 60 or cropped_left.shape[0] < 60:
                         break
-
                     # Pose Estimation Inference
                     poses = pose_estimation_model.predict(cropped_image)
-
                     # Gaze Estimation Inference
-
                     gz = gaze_estimation_model.predict(poses, cropped_left, cropped_right)
-
                     # Mouse Controller
                     mouse.move(gz[0][0], gz[0][1])
-
-                    det_time = time.time() - start_inference
-                    inf_time_message = "Inference time: {:.3f}ms" \
-                        .format(det_time * 1000)
-
-                    cv2.putText(frame, inf_time_message, (15, 35),
-                                cv2.FONT_HERSHEY_COMPLEX, 0.5, (255, 255, 255), 1)
-
-                    cv2.putText(frame,
-                                'Inference Running  %d FPs' % round(fps, 1),
-                                (15, 65), cv2.FONT_HERSHEY_COMPLEX, 0.5, (255, 255, 255), 1)
-
                     # If user pass statistics argument to true
-                    y_max = 70
                     if stats:
                         # Print performance
-                        perf = face_model.performance_counter(0)
-                        performance_counts(perf)
+                        performance_counts(
+                            face_model.performance_counter(0)
+                        )
+                        performance_counts(
+                            pose_estimation_model.performance_counter(0)
+                        )
+                        performance_counts(
+                            landmark_model.performance_counter(0)
+                        )
+                        performance_counts(
+                            gaze_estimation_model.performance_counter(0)
+                        )
 
                 if not toggle:
+                    # Output Camera or Video
                     cv2.imshow(MAIN_WINDOW_NAME, frame)
+
                 else:
-                    perf = face_model.performance_counter(0)
-                    performance_counts(perf)
+                    # Print Statistics only no camera or video
+                    performance_counts(
+                        face_model.performance_counter(0)
+                    )
+                    performance_counts(
+                        pose_estimation_model.performance_counter(0)
+                    )
+                    performance_counts(
+                        landmark_model.performance_counter(0)
+                    )
+                    performance_counts(
+                        gaze_estimation_model.performance_counter(0)
+                    )
 
                 cv2.waitKey(1)
             except Exception as e:
                 print('Could not run Inference', e)
-        average_inf_time = average_inf_time / counter
-        with open(os.path.join(output_path, 'inference.txt'), 'w') as f:
-            f.write('Inference Time Average : ' + str(average_inf_time) + '\n')
-            f.write('Frame Per Second  : ' + str(fps) + '\n')
-            f.write('Model load time  : ' + str(total_model_load_time) + '\n')
+
 
         feed.close()
     except Exception as e:
@@ -190,3 +187,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     main(args)
+
+# Benchmarks
+# Stats output
+#

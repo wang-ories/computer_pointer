@@ -13,19 +13,22 @@ import pyautogui
 class MouseController:
     def __init__(self, precision, speed):
         pyautogui.FAILSAFE = False
-        precision_dict = {'high': 100, 'low': 1000, 'medium': 500}
-        speed_dict = {'fast': 1, 'slow': 5, 'medium': 2}
+        precision_dict = {'high': 100, 'low': 1000, 'medium': 200}
+        speed_dict = {'fast': 0, 'slow': 5, 'medium': 2}
 
         self.precision = precision_dict[precision]
         self.speed = speed_dict[speed]
+
         width, height = pyautogui.size()
         pyautogui.moveTo(width/2, height/2)
 
     def move(self, x, y):
-        pyautogui.moveRel(x * self.precision, -1 * y * self.precision, duration=self.speed)
         width, height = pyautogui.size()
         x_position, y_position = pyautogui.position()
         if x_position >= width:
             pyautogui.moveTo(0, height)
         if y_position >= height:
             pyautogui.moveTo(width, 0)
+
+        pyautogui.moveRel(x * self.precision, -1 * y * self.precision, duration=self.speed)
+

@@ -1,0 +1,22 @@
+{
+    
+    "models": [
+        {
+            "model": "./resources/models/face-detection-adas-0001/FP16/face-detection-adas-0001",
+            "label": "face_detection"
+        },
+        {
+            "model": "./resources/models/landmarks-regression-retail-0009/FP16/landmarks-regression-retail-0009",
+            "label": "facial_landmarks_detection"
+        },
+        {
+            "model": "./resources/models/head-pose-estimation-adas-0001/FP16/head-pose-estimation-adas-0001",
+            "label": "head_pose_estimation"
+        },
+        {
+            "model": "./resources/models/gaze-estimation-adas-0002/FP16/gaze-estimation-adas-0002",
+            "label": "gaze_estimation"
+        }
+    ]
+    
+}
