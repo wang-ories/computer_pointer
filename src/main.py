@@ -52,7 +52,6 @@ def main(args):
     device = args.device
     video_file = args.video
     input_type = args.input_type
-    output_path = args.output_path
     toggle = args.toggle
     stats = args.stats
     model = args.model
@@ -94,18 +93,17 @@ def main(args):
     print('[TOTAL] Loaded in {:.3f} ms'.format(total_model_load_time))
 
     # End Model Loading
-
+    mouse = MouseController('high', 'fast')
+    if not toggle:
+        cv2.namedWindow(MAIN_WINDOW_NAME, cv2.WINDOW_AUTOSIZE)
     try:
         feed = InputFeeder(input_type=input_type, input_file=video_file)
         feed.load_data()
         initial_w = int(feed.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         initial_h = int(feed.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-        fps = int(feed.cap.get(cv2.CAP_PROP_FPS))
         counter = 0
-        mouse = MouseController('medium', 'fast')
         if not toggle:
-            cv2.namedWindow(MAIN_WINDOW_NAME, cv2.WINDOW_AUTOSIZE)
-        average_inf_time = 0
+            cv2.namedWindow(MAIN_WINDOW_NAME, cv2.WINDOW_NORMAL)
         for frame, _ in feed.next_batch():
             if not _:
                 break
@@ -147,6 +145,7 @@ def main(args):
 
                 if not toggle:
                     # Output Camera or Video
+                    cv2.resizeWindow(MAIN_WINDOW_NAME, 480, 320)
                     cv2.imshow(MAIN_WINDOW_NAME, frame)
 
                 else:
@@ -168,7 +167,6 @@ def main(args):
             except Exception as e:
                 print('Could not run Inference', e)
 
-
         feed.close()
     except Exception as e:
         print("Could not run Inference: ", e)
@@ -188,6 +186,3 @@ if __name__ == '__main__':
     args = parser.parse_args()
     main(args)
 
-# Benchmarks
-# Stats output
-#
