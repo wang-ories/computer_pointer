@@ -95,7 +95,7 @@ python3 main.py -i resources/demo.mp4  -d  CPU
 To run basic demo, use `demo.mp4` video   in `./resources/video.mp4`  and `-d CPU` option.
 
 ```
-python3 main.py  --model ./resources/models.json  --video ./resources/demo.mp4  --stats true
+python3 main.py  --model ./resources/models.json  --video ./resources/demo.mp4  --stats true --toggle false
 
 ```
 
@@ -127,10 +127,10 @@ The benchmarks  include: model loading time, input/output processing time, model
 
 ### Model landmarks-regression-retail-0009
 
- `INFO ] Device info
-         CPU
-         MKLDNNPlugin............ version 2.1
-         Build................... 42025`
+ `INFO ] Device info  
+         CPU  
+         MKLDNNPlugin............ version 2.1  
+         Build................... 42025`  
          
 #####- FP16
 
@@ -142,10 +142,10 @@ The benchmarks  include: model loading time, input/output processing time, model
 
 #####- FP16-INT8
 
-    Count:      104948 iterations
-    Duration:   60006.49 ms
-    Latency:    1.49 ms
-    Throughput: 1748.94 FPS
+    Count:      115196 iterations
+    Duration:   60015.98 ms
+    Latency:    1.45 ms
+    Throughput: 1919.42 FPS
 
     
 ####- FP32
@@ -165,8 +165,6 @@ The benchmarks  include: model loading time, input/output processing time, model
     Latency:    10.90 ms
     Throughput: 282.42 FPS
     
-####- FP16-INT8
-
     
 ####- FP32
 
@@ -184,8 +182,6 @@ The benchmarks  include: model loading time, input/output processing time, model
     Latency:    15.46 ms
     Throughput: 196.25 FPS
     
-####- FP16-INT8
-
 
 ####- FP32
 

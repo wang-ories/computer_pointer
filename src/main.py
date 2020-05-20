@@ -145,7 +145,7 @@ def main(args):
 
                 if not toggle:
                     # Output Camera or Video
-                    cv2.resizeWindow(MAIN_WINDOW_NAME, 480, 320)
+                    #cv2.resizeWindow(MAIN_WINDOW_NAME, 480, 320)
                     cv2.imshow(MAIN_WINDOW_NAME, frame)
 
                 else:
